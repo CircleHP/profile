@@ -10,9 +10,9 @@ import Settings from 'screens/Settings';
 const App = () => {
     return (
         <Switch>
-            <Route to='/' render={() => <Home />} />
-            <Route to='/portfolio' render={() => <Portfolio />} />
-            <Route to='/settings' render={() => <Settings />} />
+            <Route path='/portfolio' render={() => <Portfolio />} />
+            <Route path='/settings' render={() => <Settings />} />
+            <Route exact path='/' render={() => <Home />} />
         </Switch>
     );
 };
