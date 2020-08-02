@@ -1,10 +1,22 @@
 import React from 'react';
-
 import Navigation from 'components/Navigation';
+import Dialog from 'components/Dialog';
+import PersonalInformation from 'components/PersonalInformation';
 
-const Home = () => {
+//in the left box personal information should be shown(name, personal info...)
+
+const Home = (props) => {    
+
     return (
-        <Navigation />
+        <div>
+            <Navigation />
+            Home
+            <Dialog />
+
+            
+
+           
+        </div>
     );
 };
 
