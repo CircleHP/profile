@@ -1,21 +1,28 @@
 import React from 'react';
-import Navigation from 'components/Navigation';
+
 import Dialog from 'components/Dialog';
-import PersonalInformation from 'components/PersonalInformation';
 
-//in the left box personal information should be shown(name, personal info...)
+// firstName: '',
+//     lastName: '',
+//     personalNumber: '',
+//     adress: '',
+//     city: '',
+//     postNumber: '',
+//     phoneNumber: '',
+//     email: '',
 
-const Home = (props) => {    
-
+const Home = ({ userData }) => {
     return (
         <div>
-            <Navigation />
             Home
-            <Dialog />
-
-            
-
-           
+            <Dialog userData={userData} />
+            <img src={userData.img} alt='user-avatar' />
+            <div>
+                First Name: {userData.firstName}
+            </div>
+            <div>
+                Last Name: {userData.lastName}
+            </div>
         </div>
     );
 };
