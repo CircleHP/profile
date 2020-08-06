@@ -4,6 +4,8 @@ import PersonalInformation from './PersonalInformation';
 import SettingsTabs from 'components/SettingsTabs';
 
 import './Settings.styled.sass';
+import Password from './Password';
+import Preferences from './Preferences';
 
 const Settings = ({ userData, setUserData }) => {
     const [currentTab, setCurrentTab] = useState('1');
@@ -19,10 +21,10 @@ const Settings = ({ userData, setUserData }) => {
                             return <PersonalInformation userData={userData} setUserData={setUserData} />
 
                         case '2':
-                            return <div>Tab num.2</div>
+                            return <Password userData={userData} setUserData={setUserData} />
 
                         case '3':
-                            return <div>Tab num.3</div>
+                            return <Preferences userData={userData} setUserData={setUserData} />
 
                         default:
                             return <PersonalInformation userData={userData} setUserData={setUserData} />
