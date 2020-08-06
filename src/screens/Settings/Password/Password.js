@@ -6,8 +6,6 @@ import Input from 'components/Input';
 import './Password.styled.sass';
 
 const Password = ({ userData, setUserData }) => {
-        //code needed to save the checkboxed preferencies into the localStorage
-
 
     const [currentPassword, setCurrentPassword] = useState(userData.currentPassword);
     const [newPassword, setNewPassword] = useState(userData.newPassword);
