@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { saveDataToLocalStorage } from 'store';
 
 import Input from 'components/Input';
+
 import './PersonalInformation.styled.sass';
 
 const PersonalInformation = ({ userData, setUserData }) => {
@@ -38,16 +39,35 @@ const PersonalInformation = ({ userData, setUserData }) => {
 
     return (
         <div className='input-form'>
-            <Input label='Photo' currentValue={img} handleChange={setImage} /><br/> 
-            <Input label='First name' currentValue={firstName} handleChange={setFirstName} /><br/> 
-            <Input label='Last name' currentValue={lastName} handleChange={setLastName} /><br/> 
-            <Input label='Number' currentValue={personalNumber} handleChange={setPersonalNumber} /><br/> 
-            <Input label='Adress' currentValue={adress} handleChange={setAdress} /><br/> 
-            <Input label='City' currentValue={city} handleChange={setCity} /><br/> 
-            <Input label='Post number' currentValue={postNumber} handleChange={setPostNumber} /><br/> 
-            <Input label='Phone number' currentValue={phoneNumber} handleChange={setPhoneNumber} /><br/> 
-            <Input label='Email' currentValue={email} handleChange={setEmail} /><br/> 
-            <button onClick={() => handleSave()} className='button-save'>Spara</button><br/> 
+            <div className='input-item-small'>
+                <Input label='First name' currentValue={firstName} handleChange={setFirstName} />
+            </div>
+            <div className='input-item-small'>
+                <Input label='Last name' currentValue={lastName} handleChange={setLastName} />
+            </div>
+            <div className='input-item-medium'>
+                <Input label='Number' currentValue={personalNumber} handleChange={setPersonalNumber} />
+            </div>
+            <div className='input-item-medium'>
+                <Input label='Adress' currentValue={adress} handleChange={setAdress} />
+            </div>
+            <div className='input-item-small'>
+                <Input label='City' currentValue={city} handleChange={setCity} />
+            </div>
+            <div className='input-item-small'>
+                <Input label='Post number' currentValue={postNumber} handleChange={setPostNumber} />
+            </div>
+            <div className='input-item-medium'>
+                <Input label='Phone number' currentValue={phoneNumber} handleChange={setPhoneNumber} />
+            </div>
+            <div className='input-item-medium'>
+                <Input label='Email' currentValue={email} handleChange={setEmail} />
+            </div>
+            <div className='input-item-medium'>
+                <Input label='Photo' currentValue={img} handleChange={setImage} />
+            </div>
+
+            <button onClick={() => handleSave()} className='button-save'>Spara</button>
         </div>
     );
 };
