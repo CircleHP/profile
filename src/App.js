@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 
 import 'assets/global.css';
 import './App.styled.sass';
@@ -14,9 +14,11 @@ import { initialValues } from 'store';
 const App = () => {
     const [userData, setUserData] = useState(initialValues);
 
+    const location = useLocation();
+
     return (
         <>
-            <Navigation />
+            <Navigation currentLocation={location.pathname} />
             <Switch>
                 {/* 1st screen */}
                 <Route path='/portfolio' render={() => <Portfolio />} />
