@@ -24,7 +24,7 @@ const Password = ({ userData, setUserData }) => {
     };
 
     return (
-        <div className='input-form'>
+        <div className='input-password'>
             <Input label='Nuvarande lösenord' currentValue={currentPassword} handleChange={setCurrentPassword} /><br/> 
             <Input label='Nytt lösenord' currentValue={newPassword} handleChange={setNewPassword} /><br/> 
             <Input label='Bekräfta nytt lösenord' currentValue={confirmNewPassword} handleChange={setConfirmNewPassword} /><br/> 
