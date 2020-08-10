@@ -18,7 +18,6 @@ const Preferences = ({ userData, setUserData }) => {
     return (
         <div>
             {options.map((item, i) => (
-                // <div key={i} onClick={() => handleChange(item)}>{item.label}: {item.value ? 'true' : 'false'}</div>
                 <div key={i}>
                     <span>{item.label}</span>
                     <input type='checkbox' checked={item.value} onChange={() => handleChange(item)} />

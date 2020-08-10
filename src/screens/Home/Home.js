@@ -15,11 +15,14 @@ const Home = ({ userData }) => {
 
             <div className='home-container'>
                 <div className='block'>
-                    <RouteWithLabel label='Min Profil' route='/settings'/>
+                    <RouteWithLabel label='Min Profil' route='/settings' />
                     <AvatarWithData userData={userData} />
-                    <div className='block-label'>
+                    {userData.industryOptions && <div className='block-label'>
                         Föredragna Industrier
-                    </div>
+                        {userData.industryOptions.map((item) => item.value === true && (
+                            <div>{item.label}</div>
+                        ))}
+                    </div>}
                     {/* todo another block with data */}
                     <div className='block-label'>
                         Kontaktuppgifter
@@ -48,7 +51,7 @@ const Home = ({ userData }) => {
                     </div>
                 </div>
                 <div className='block'>
-                    <RouteWithLabel label='Mitt Innehav' route='/portfolio'/>
+                    <RouteWithLabel label='Mitt Innehav' route='/portfolio' />
                 </div>
             </div>
         </div>

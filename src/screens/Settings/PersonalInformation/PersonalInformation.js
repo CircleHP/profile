@@ -33,8 +33,8 @@ const PersonalInformation = ({ userData, setUserData }) => {
     };
 
     const handleSave = () => {
-        setUserData(userDataObject);
-        saveDataToLocalStorage(userDataObject);
+        setUserData({ ...userData, img, firstName, lastName, personalNumber, adress, city, postNumber, phoneNumber, email});
+        saveDataToLocalStorage({...userData});
     };
 
     return (

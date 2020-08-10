@@ -6,7 +6,8 @@
         "numberOfActions": 3000,
         "actionNumber": 13000,
         "ownershipInterest": 1.01,
-        "votingPower": 11.00
+        "votingPower": 11.00,
+        "industry": "medicine"
     },
     {
         "companyName": "Företag 2",
@@ -108,7 +109,7 @@
         "votingPower": 1.00
     },
     {
-        "companyName": "Företag 10",
+        "companyName": "Företag 13",
         "invested": 20000,
         "actionType": "A",
         "numberOfActions": 3000,
@@ -117,7 +118,7 @@
         "votingPower": 1.00
     },
     {
-        "companyName": "Företag 13",
+        "companyName": "Företag 14",
         "invested": 20000,
         "actionType": "B",
         "numberOfActions": 3000,
@@ -126,7 +127,7 @@
         "votingPower": 1.00
     },
     {
-        "companyName": "Företag 14",
+        "companyName": "Företag 15",
         "invested": 20000,
         "actionType": "C",
         "numberOfActions": 3000,
@@ -135,7 +136,7 @@
         "votingPower": 1.00
     },
     {
-        "companyName": "Företag 15",
+        "companyName": "Företag 16",
         "invested": 20000,
         "actionType": "C",
         "numberOfActions": 3000,
@@ -144,7 +145,7 @@
         "votingPower": 1.00
     },
     {
-        "companyName": "Företag 16",
+        "companyName": "Företag 17",
         "invested": 20000,
         "actionType": "C",
         "numberOfActions": 3000,
@@ -153,7 +154,7 @@
         "votingPower": 1.00
     },
     {
-        "companyName": "Företag 17",
+        "companyName": "Företag 18",
         "invested": 20000,
         "actionType": "C",
         "numberOfActions": 3000,
