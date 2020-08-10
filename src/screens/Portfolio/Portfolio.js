@@ -1,71 +1,54 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
+import data from 'companiesData/Company.json';
 import ScreenHeader from 'components/ScreenHeader';
+import Pagination from './Pagination';
+import Card from './Card';
 
 import './Portfolio.styled.sass';
 
-import data from 'companiesData/Company.json';
+const header = ['Företag', 'Innehav', 'Aktietyp', 'Antal aktier', 'Aktienummer', 'Ågarandel', 'Röstvärde', 'Download'];
+const PAGE_LIMIT = 10;
 
-import Card from './Card';
+const TableHeader = () => header.map((item, i) => (<th key={i}>{item}</th>));
 
-const NR_OF_LINES = 10;
+const UpdateTimestamp = () => {
+    const date = new Date().toLocaleString();
 
-class Portfolio extends Component {
-    state = {
-        data: [],
-      }
+    return (
+        <div>Senast uppdaterat {date}</div>
+    );
+};
 
-    componentDidMount(){
-        const slicedArr = data.slice(0,10);
-        this.setState( {
-          data: slicedArr,
-        });
-      }
-    
-    
-render() {
+const Portfolio = () => {
+    const [currentPageData, setCurrentPageData] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPageLimit, setNewPageLimit] = useState(PAGE_LIMIT);
 
-    const date = new Date().toLocaleString().slice(0, 10);
+    console.log(currentPageLimit);
 
-        return (
-            <div className='portfolioContainer'>
-                <ScreenHeader label='Portfölj' />
-                <div>Senast uppdaterat {date}</div>
+    const pages = Math.ceil(data.length / currentPageLimit);
 
-                <div className='portfolio-table'>
+    useEffect(() => {
+        setCurrentPageData(data.slice(currentPage * currentPageLimit - currentPageLimit, currentPage * currentPageLimit));
+    }, [currentPage, currentPageLimit]);
 
-                    <div className="card-container">
-                        
-                        <th>Företag</th>
-                        <th>Innehav</th>
-                        <th>Aktietyp</th>
-                        <th>Antal aktier</th>
-                        <th>Aktienummer</th>
-                        <th>Ågarandel</th>
-                        <th>Röstvärde</th>                            <th>Download</th>
-                        
-                        {this.state.data.map((data, key) => {
-                            return (
-                                <Card
-                                key={key}
-                                companyName={data.companyName}
-                                invested={data.invested}
-                                actionType={data.actionType}                                    numberOfActions={data.numberOfActions}
-                                actionNumber={data.actionNumber}
-                                ownershipInterest={data.ownershipInterest}
-                                votingPower={data.votingPower}
-                                buttonName={"Download"}
-                                download={this.downloadData}
-                                /> 
-                            );
-                        })}            
-                    </div>
-
-                    
+    return (
+        <div className='portfolio-container'>
+            <ScreenHeader label='Portfölj' updateTimestamp={<UpdateTimestamp />} />
+            <div className='portfolio-table'>
+                <div className="port-container">
+                    <TableHeader />
+                    {currentPageData && currentPageData.map((item, i) => {
+                        return (
+                            <Card key={i} card={item} />
+                        );
+                    })}
                 </div>
+                <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} setNewPageLimit={setNewPageLimit} currentPageLimit={currentPageLimit} />
             </div>
-        );
-    }
+        </div>
+    );
 };
 
 export default Portfolio;
