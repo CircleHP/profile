@@ -25,8 +25,6 @@ const Portfolio = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentPageLimit, setNewPageLimit] = useState(PAGE_LIMIT);
 
-    console.log(currentPageLimit);
-
     const pages = Math.ceil(data.length / currentPageLimit);
 
     useEffect(() => {
