@@ -1,88 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-// import { saveDataToLocalStorage } from 'store';
+import { saveDataToLocalStorage } from 'store';
 
 import './Preferences.styled.sass';
 
 const Preferences = ({ userData, setUserData }) => {
+    const [options, setOptions] = useState(userData.industryOptions);
 
-    //code needed to save the checkboxed preferencies into the localStorage
-    // const [] = useState(userData.currentPassword);
-    // const [] = useState(userData.newPassword);
-    // const [] = useState(userData.confirmNewPassword);
+    const handleChange = (item) => {
+        const changedOptions = options.map((itemToChange) => itemToChange.label === item.label ? { ...itemToChange, value: !item.value } : itemToChange);
 
-    // const handleSave = () => {
-    //     setUserData(userDataObject);
-    //     saveDataToLocalStorage(userDataObject);
-    // };
+        setOptions(changedOptions);
+        setUserData({ ...userData, industryOptions: changedOptions });
+        saveDataToLocalStorage({ ...userData, industryOptions: changedOptions });
+    };
 
     return (
-        <div />
-
-            // <div className="department">
-
-            // <p>Mina prefererade industrier att investera inom:</p>
-
-            // <form>
-            // <tr>
-            // <td>
-            // <input type="checkbox" name="industry" />
-            // Bygg
-            // </td>
-            // <td>
-            // <input type="checkbox" name="industry" />
-            // Medicin
-            // </td>
-            // </tr>
-
-            // <tr>
-            // <td>
-            // <input type="checkbox" name="industry" />
-            // Utbildning
-            // </td>
-            // <td>
-            // <input type="checkbox" name="industry" />
-            // Teknologi
-            // </td>
-            // </tr>
-
-            // <tr>
-            // <td>
-            // <input type="checkbox" name="industry" />
-            // Jordbruk
-            // </td>
-            // <td>
-            // <input type="checkbox" name="industry" />
-            // Mass media
-            // </td>
-            // </tr>
-
-            // <tr>
-            // <td>
-            // <input type="checkbox" name="industry" />
-            // Reklam
-            // </td>
-            // <td>
-            // <input type="checkbox" name="industry" />
-            // Resa
-            // </td>
-            // </tr>
-
-            // </form>
-
-            // <p>Tips! Ifall du väljer att integrera din bank så kan vi anpassa dina
-            // <br />
-            // investeringar utefter din ekonomi och preferenser.
-            // </p>
-
-            // <p>Integrera min bank</p>
-            // <p>(detta kommer att skicka dig vidare etc...)</p>
-
-            // <button onClick={() => handleSave()} className='button-save'>Spara</button><br/>
-
-            // </div>
-
-
+        <div>
+            {options.map((item, i) => (
+                <div key={i}>
+                    <span>{item.label}</span>
+                    <input type='checkbox' checked={item.value} onChange={() => handleChange(item)} />
+                </div>
+            ))}
+        </div>
     );
 };
 

@@ -33,12 +33,15 @@ const PersonalInformation = ({ userData, setUserData }) => {
     };
 
     const handleSave = () => {
-        setUserData(userDataObject);
-        saveDataToLocalStorage(userDataObject);
+        setUserData({ ...userData, img, firstName, lastName, personalNumber, adress, city, postNumber, phoneNumber, email});
+        saveDataToLocalStorage({...userData});
     };
 
     return (
         <div className='input-form'>
+            <div className='input-item-medium'>
+            <Input label='Photo' currentValue={img} handleChange={setImage} />
+            </div>
             <div className='input-item-small'>
                 <Input label='First name' currentValue={firstName} handleChange={setFirstName} />
             </div>
@@ -62,9 +65,6 @@ const PersonalInformation = ({ userData, setUserData }) => {
             </div>
             <div className='input-item-medium'>
                 <Input label='Email' currentValue={email} handleChange={setEmail} />
-            </div>
-            <div className='input-item-medium'>
-                <Input label='Photo' currentValue={img} handleChange={setImage} />
             </div>
 
             <button onClick={() => handleSave()} className='button-save'>Spara</button>

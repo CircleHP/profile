@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import data from 'companiesData/Company.json';
 
 import Dialog from 'components/Dialog';
 import ScreenHeader from 'components/ScreenHeader';
 
 import RouteWithLabel from './RouteWithLabel';
 import AvatarWithData from './AvatarWithData';
+import Stats from './Stats';
+
 import './Home.styled.sass';
+
+const statsHeaders = data.map((item) => item.industry);
+const statsHeadersSet = new Set(statsHeaders);
+
+const total = data.map((item) => item.invested).reduce((accum, item) => { return accum + item});
 
 const Home = ({ userData }) => {
     return (
@@ -15,11 +24,14 @@ const Home = ({ userData }) => {
 
             <div className='home-container'>
                 <div className='block'>
-                    <RouteWithLabel label='Min Profil' route='/settings'/>
+                    <RouteWithLabel label='Min Profil' route='/settings' />
                     <AvatarWithData userData={userData} />
-                    <div className='block-label'>
+                    {userData.industryOptions && <div className='block-label'>
                         Föredragna Industrier
-                    </div>
+                        {userData.industryOptions.map((item, i) => item.value === true && (
+                            <div key={i}>{item.label}</div>
+                        ))}
+                    </div>}
                     {/* todo another block with data */}
                     <div className='block-label'>
                         Kontaktuppgifter
@@ -48,7 +60,8 @@ const Home = ({ userData }) => {
                     </div>
                 </div>
                 <div className='block'>
-                    <RouteWithLabel label='Mitt Innehav' route='/portfolio'/>
+                    <RouteWithLabel label='Mitt Innehav' route='/portfolio' />
+                    <Stats header={[...statsHeadersSet]} data={data} total={total} />
                 </div>
             </div>
         </div>
