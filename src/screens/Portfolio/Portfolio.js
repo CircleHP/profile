@@ -14,7 +14,6 @@ const TableHeader = () => header.map((item, i) => (<th key={i}>{item}</th>));
 
 const UpdateTimestamp = () => {
     const date = new Date().toLocaleString().slice(0, 10);
-
     return (
         <div className='updated-date'>| Senast uppdaterat {date}</div>
     );
@@ -33,7 +32,7 @@ const Portfolio = () => {
 
     return (
         <div className='portfolio-container'>
-            <ScreenHeader label='Portfölj' updateTimestamp={<UpdateTimestamp />} />
+            <ScreenHeader label='Min Portfölj' updateTimestamp={<UpdateTimestamp />} />
             <div className='portfolio-table'>
                 <div className="port-container">
                     <TableHeader />
